@@ -8,17 +8,15 @@ Since the website is public, there will be accounts and passwords already regist
 Will be stored in *deliverables* folder.
 
 ## Framework Structure
-pages/
-fixtures/
-utils/
-tests/
-|_ setup/ # Authentication setup (create user, login, save storage state)
-|_ ui/ # UI tests
-| |_ auth/ # Login/logout tests (no storage state)
-| |_ *.spec.ts
-|_ api/ # Smoke API tests 
-|_ regression/ # Smoke regression tests
-|_ performance/ # k6 performance smoke tests
+- pages/: Page Objects (POM)
+- fixtures/: Shared Playwright fixtures
+- utils/: Helpers and utilities
+- tests/
+  - setup/: Auth setup (storageState)
+  - ui/: UI tests (login, cart, search)
+  - api/: API smoke tests
+  - regression/: Regression flows
+  - performance/: k6 performance smoke tests
 
 ## Rationale:
 - UI, API, regression, and performance tests are separated for clarity.
