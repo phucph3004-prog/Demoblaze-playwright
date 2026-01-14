@@ -20,20 +20,16 @@ jobs:
       - name: Run UI login/logout suite (no-auth, chromium)
         env:
           BASE_URL: https://www.demoblaze.com/
-          USER: ${{ secrets.USER }}
-          PASS: ${{ secrets.PASS }}
-        run: npx playwright test --project ui-noauth-chromium
+        run: npx playwright test --project ui-noauth-chromium --workers=1
 
       - name: Run UI authenticated suite (cross-browser; includes setup dependency)
         env:
           BASE_URL: https://www.demoblaze.com/
-          USER: ${{ secrets.USER }}
-          PASS: ${{ secrets.PASS }}
         run: |
-          npx playwright test --project ui-auth-chromium
+          npx playwright test --project ui-auth-chromium --workers=1
 
       - name: Run API tests
-        run: npx playwright test --project api
+        run: npx playwright test --project api --workers=1
 
       - name: Upload HTML report
         if: always()
