@@ -18,6 +18,8 @@ export class CartPage {
   }
 
   async expectHasProduct(name: string) {
+    const rows = this.page.locator('tr.success');
+    await expect(rows.first()).toBeVisible({ timeout: 6000 });
     await expect(
       this.page.locator(Sel.cart.row).filter({ hasText: name })
     ).toBeVisible();
@@ -28,10 +30,5 @@ export class CartPage {
     await expect(row).toBeVisible();
     await row.locator(Sel.cart.deleteBtn).click();
     await expect(row).toHaveCount(0);
-  }
-
-  async getTotal(): Promise<number> {
-    const text = (await this.total.textContent()) ?? '0';
-    return Number(text.trim());
   }
 }

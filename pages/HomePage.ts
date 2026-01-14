@@ -45,6 +45,6 @@ export class HomePage {
       await this.nextBtn.click();
       await expect(this.productCards.first()).toBeVisible();
     }
-    throw new Error(`Can not find the product ${productName}!`);
+    throw new Error(`Product not found: ${productName}!`);
   }
 }

@@ -11,9 +11,9 @@ export class LoginModal {
   constructor(page: Page) {
     this.page = page;
     this.root = page.locator(Sel.loginModal.root);
-    this.username = page.locator(Sel.loginModal.username);
-    this.password = page.locator(Sel.loginModal.password);
-    this.submit = page.locator(Sel.loginModal.submit);
+    this.username = this.root.locator(Sel.loginModal.username);
+    this.password = this.root.locator(Sel.loginModal.password);
+    this.submit = this.root.locator(Sel.loginModal.submit);
   }
 
   async expectOpen() {
@@ -21,6 +21,7 @@ export class LoginModal {
   }
 
   async login(username: string, password: string) {
+    await this.expectOpen();
     await this.username.fill(username);
     await this.password.fill(password);
     await this.submit.click();

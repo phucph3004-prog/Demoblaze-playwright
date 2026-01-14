@@ -23,7 +23,7 @@ test.describe('Search/Browse - DemoBlaze (fixtures per POM)', () => {
     const notFound = 'NonExistingProductXYZ__';
 
     await expect(async () => {
-      await homePage.findAndOpenProductByName(notFound, 3);
+      await homePage.findAndOpenProductByName(notFound);
     }).rejects.toThrow(/Product not found/);
   });
 });

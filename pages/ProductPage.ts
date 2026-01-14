@@ -19,7 +19,7 @@ export class ProductPage {
   }
 
   async addToCart() {
-    await acceptNextDialog(this.page);
     await this.addToCartBtn.click();
+    await acceptNextDialog(this.page);
   }
 }

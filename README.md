@@ -1,6 +1,9 @@
 # DemoBlaze QA Automation
 This project demonstrates a simple QA automation setup for the DemoBlaze website using Playwright (UI,API testing) and k6 (Performance testing).
 
+# Note: Important!
+I 
+
 ## Framework Structure
 pages/
 fixtures/
