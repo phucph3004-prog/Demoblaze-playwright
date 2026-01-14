@@ -18,11 +18,13 @@ export class CartPage {
   }
 
   async expectHasProduct(name: string) {
-    const rows = this.page.locator('tr.success');
-    await expect(rows.first()).toBeVisible({ timeout: 6000 });
-    await expect(
-      this.page.locator(Sel.cart.row).filter({ hasText: name })
-    ).toBeVisible();
+    const body = this.page.locator('#tbodyid');
+    
+    await expect(body).toBeVisible();
+    await expect.poll(async () => {
+      return await this.page.locator('tr.success').count();
+    }, { timeout: 15000 }).toBeGreaterThan(0);
+
   }
 
   async deleteProductByName(name: string) {

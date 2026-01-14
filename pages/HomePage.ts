@@ -42,7 +42,11 @@ export class HomePage {
         return;
       }
       if (!(await this.nextBtn.isVisible())) break;
-      await this.nextBtn.click();
+      try {
+        await this.nextBtn.click({ timeout: 2000 });
+      } catch {
+        break;
+      }
       await expect(this.productCards.first()).toBeVisible();
     }
     throw new Error(`Product not found: ${productName}!`);

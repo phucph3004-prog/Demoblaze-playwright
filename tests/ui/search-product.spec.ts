@@ -1,6 +1,6 @@
 import { test, expect } from '../../fixtures/core';
 
-test.describe('Search/Browse - DemoBlaze (fixtures per POM)', () => {
+test.describe('Search product', () => {
   test('Search by criteria (product name) via browsing + pagination', async ({ page, homePage, productPage }) => {
     const criteria = process.env.SEARCH_CRITERIA ?? 'Samsung galaxy s6';
 
@@ -8,7 +8,7 @@ test.describe('Search/Browse - DemoBlaze (fixtures per POM)', () => {
       await homePage.goto();
     });
 
-    await test.step('Find and open product by name (criteria)', async () => {
+    await test.step('Find and open product by name', async () => {
       await homePage.findAndOpenProductByName(criteria, 6);
     });
 
@@ -18,7 +18,7 @@ test.describe('Search/Browse - DemoBlaze (fixtures per POM)', () => {
     });
   });
 
-  test('Search negative - product not found should fail gracefully (handled)', async ({ homePage }) => {
+  test('Search negative - product not found should fail gracefully', async ({ homePage }) => {
     await homePage.goto();
     const notFound = 'NonExistingProductXYZ__';
 

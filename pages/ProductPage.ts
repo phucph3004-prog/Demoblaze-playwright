@@ -20,6 +20,7 @@ export class ProductPage {
 
   async addToCart() {
     await this.addToCartBtn.click();
-    await acceptNextDialog(this.page);
+    const dialog = await this.page.waitForEvent('dialog', { timeout: 10000 });
+    await dialog.accept();
   }
 }
